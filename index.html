@@ -1,0 +1,44 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+<body>
+    <form id="shost">URL: <input type="text" name="url" id="url" /><input type="submit" value="Check" /></form>
+    <div id="results">
+
+    <script type="text/javascript">/* <![CDATA[ */
+    $(function() {
+        $('#shost').submit(function() {
+            $.getJSON("http://78.47.228.218:4233/?callback=?", $(this).serialize() ,function(re) {
+                var color="#0C0";
+                if (re.type == 3 || re.type==4) {
+                    color="#C00";
+                }
+                f=function(){}
+                v = "<span style='color:"+color+"'>"+re.message+"!</span> "
+                if (re.dom!='') {
+                    v+="You can find your secure facebook url on: <span id='vxdom' style='color:#00C'/>";
+                    f=function() {$("#vxdom").text(re.dom);};
+                }
+                $("#results").html(v);
+                f();
+            })
+            $("#results").html("<img src='data:image/gif;base64, \
+                R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4 \
+                bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklr \
+                E2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAA \
+                EAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUk \
+                KhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9 \
+                HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYum \
+                CYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzII \
+                unInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAF \
+                ACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJ \
+                ibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFG \
+                xTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdce \
+                CAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==' alt='loading' />");
+            return false;
+        });
+    });
+    /* ]]> */</script>
+</body>
+</html>
